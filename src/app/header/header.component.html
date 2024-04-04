@@ -6,17 +6,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/recipes" >Recipes</a>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/recipes">Recipes</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
           <a class="nav-link" routerLink="/auth">Sign Up</a>
         </li>
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
+          <li class="nav-item" *ngIf="isAuthenticated">
+            <a class="nav-link" style="cursor: pointer;">Log out</a>
+          </li>
+          <li class="dropdown"*ngIf="isAuthenticated">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Manage
             </a>
