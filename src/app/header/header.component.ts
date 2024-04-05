@@ -12,7 +12,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private userSub:Subscription;
   isAuthenticated = false;
 
-  constructor( private dataStorageService: DataStorageService, private authService:AuthService){
+  constructor( private dataStorageService: DataStorageService,
+               private authService:AuthService ){
 
   }
   ngOnInit(): void {
@@ -28,6 +29,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   onFetchRecipe(){
     this.dataStorageService.fetshRecipe().subscribe();
+  }
+  onLogout(){
+    this.authService.logout();
+    
+   
   }
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
