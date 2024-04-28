@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthResponseData, AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { DataStorageService } from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,9 @@ export class AuthComponent {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService, private router:Router){}
+  constructor(private authService: AuthService,
+              private router:Router,
+              private dataStorageService: DataStorageService){}
 
   onSwitchMode(){
     this.isLoginMode = !this.isLoginMode;
@@ -39,6 +42,7 @@ export class AuthComponent {
     next: (v) => {
       this.isLoading = false;
       this.router.navigate(['./recipes']);
+      this.dataStorageService.fetshRecipe().subscribe();
   },
     error: (errorMessage) =>{
       this.error = errorMessage;

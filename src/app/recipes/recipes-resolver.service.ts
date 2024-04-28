@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
-import { ActivatedRouteSnapshot, Resolve, ResolveFn, RouterStateSnapshot } from '@angular/router';
+import { ResolveFn } from '@angular/router';
 import { RecipeService } from './recipe.service';
 import { Recipe } from './recipe.model';
 
